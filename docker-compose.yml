@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+    app:
+        build:
+            context: ./Docker
+            dockerfile: Dockerfile
+        container_name: React-app
+        ports:
+            - "5200:5200"
+        volumes:
+            - ./src:/var/app
+        stdin_open: true
+        networks:
+            - frontend
+
+networks:
+    frontend:
+        driver: bridge
